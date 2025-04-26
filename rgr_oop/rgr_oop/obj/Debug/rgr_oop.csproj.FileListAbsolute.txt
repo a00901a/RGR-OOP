@@ -1,0 +1,10 @@
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.csproj.AssemblyReference.cache
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.Properties.Resources.resources
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.TicTacToeForm.resources
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.csproj.GenerateResource.cache
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.csproj.CoreCompileInputs.cache
+D:\навчання\ооп\rgr_oop\rgr_oop\bin\Debug\rgr_oop.exe.config
+D:\навчання\ооп\rgr_oop\rgr_oop\bin\Debug\rgr_oop.exe
+D:\навчання\ооп\rgr_oop\rgr_oop\bin\Debug\rgr_oop.pdb
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.exe
+D:\навчання\ооп\rgr_oop\rgr_oop\obj\Debug\rgr_oop.pdb
