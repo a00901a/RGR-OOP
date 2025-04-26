@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+
+namespace rgr_oop
+{
+    public class GameLogic
+    {
+        public Dictionary<BoardPoint, CellState> Board { get; private set; }
+        public CellState CurrentPlayer { get; set; }
+        public bool IsPlayerVsComputer { get; private set; }
+
+        // Для тестування задаємо 3 у ряд. (Замініть на 5 для оригінальних умов)
+        private const int WinningCount = 5;
+
+        public GameLogic(bool isPlayerVsComputer)
+        {
+            IsPlayerVsComputer = isPlayerVsComputer;
+            RestartGame();
+        }
+
+        public void RestartGame()
+        {
+            Board = new Dictionary<BoardPoint, CellState>();
+            // Якщо гра з ПК – комп’ютер (Cross) завжди ходить першим.
+            // Якщо грають два гравці – за замовчуванням починає Cross.
+            CurrentPlayer = CellState.Cross;
+        }
+
+        /// <summary>
+        /// Фіксує хід у зазначену клітинку, якщо це хід того гравця, хто зараз має право.
+        /// Повертає false, якщо клітинка вже зайнята або state не співпадає з CurrentPlayer.
+        /// </summary>
+        public bool MakeMove(BoardPoint point, CellState state)
+        {
+            if (state != CurrentPlayer)
+                return false;
+
+            if (Board.ContainsKey(point))
+                return false; // Клітинка вже зайнята
+
+            Board[point] = state;
+            return true;
+        }
+
+        public bool CheckWin(BoardPoint lastMove)
+        {
+            foreach (var direction in new (int dx, int dy)[] { (1, 0), (0, 1), (1, 1), (1, -1) })
+            {
+                int count = 1; // Починаємо з останнього ходу
+                count += CountInDirection(lastMove, direction.dx, direction.dy);
+                count += CountInDirection(lastMove, -direction.dx, -direction.dy);
+                if (count >= WinningCount)
+                    return true;
+            }
+            return false;
+        }
+
+        private int CountInDirection(BoardPoint start, int dx, int dy)
+        {
+            int count = 0;
+            CellState state = Board[start];
+            BoardPoint current = new BoardPoint(start.X + dx, start.Y + dy);
+            while (Board.TryGetValue(current, out CellState s) && s == state)
+            {
+                count++;
+                current = new BoardPoint(current.X + dx, current.Y + dy);
+            }
+            return count;
+        }
+    }
+}
